@@ -12,6 +12,17 @@ rs = check_random_state(0)
 YY = rs.randint(-20, 20, size=(n,)) + 2.0 * XX
 data = np.stack([XX,YY], axis=1)
 
+# Read from xls
+# Data file provided by the Stanford course CS 20SI: TensorFlow for Deep Learning Research.
+# https://github.com/chiphuyen/tf-stanford-tutorials
+# DATA_FILE = "data/fire_theft.xls"
+
+# # read the data from the .xls file.
+# book = xlrd.open_workbook(DATA_FILE, encoding_override="utf-8")
+# sheet = book.sheet_by_index(0)
+# data = np.asarray([sheet.row_values(i) for i in range(1, sheet.nrows)])
+# num_samples = sheet.nrows - 1
+
 #######################
 ## Defining flags #####
 #######################
@@ -97,8 +108,9 @@ Labels = data[:,1]
 Prediction_values = data[:,0] * wcoeff + bias
 
 # # uncomment if plotting is desired!
-# plt.plot(Input_values, Labels, 'ro', label='main')
-# plt.plot(Input_values, Prediction_values, label='Predicted')
+plt.plot(Input_values, Labels, 'ro', label='main')
+plt.plot(Input_values, Prediction_values, label='Predicted')
+plt.show()
 
 # # Saving the result.
 # plt.legend()
